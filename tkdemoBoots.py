@@ -319,7 +319,7 @@ See: ttkbootstrap.readthedocs.io
         print(self.tex.get(1.0, END))  # text value
         print(self.c1.get())  # checkbutton 1
         print(self.c2.get())  # checkbutton 2
-        exit()
+        app.destroy()
 
 
     '''
@@ -366,7 +366,7 @@ See: ttkbootstrap.readthedocs.io
     def nm_file_saveas(self):
         pass
     def nm_file_exit(self):
-        app.destroy()
+        self.done()
     def mn_edit_undo(self):
         pass
     def mn_edit_selall(self):
@@ -386,11 +386,13 @@ See: ttkbootstrap.readthedocs.io
 
 #
 app = bs.Window("tkinter Demo with ttkbootstrap module", "cosmo")
-app.geometry("540x410") # WxH+left+top
+app.geometry("550x410") # WxH+left+top
 
 # root.overrideredirect(True) # removed window decorations
 # root.attributes("-topmost", True)  # Keep on top of other windows
 bs.Sizegrip(app).place(rely=1.0, relx=1.0, x=0, y=0, anchor='se')
+
+app.iconphoto(False, PhotoImage(file='icon.png'))
 
 Application(app)
 

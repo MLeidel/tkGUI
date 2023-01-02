@@ -13,13 +13,12 @@ from tkinter.font import Font
 import subprocess
 import os
 
-themename = "clam"
+themename = "adapta" # probably 1st in the list
 
 class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.pack()
-        self.create_widgets()
         # self.create_menu()
         self.style = Style(self)
         # self.style.configure("TButton", width=15)
@@ -27,6 +26,10 @@ class Application(Frame):
                              font='purisa 16', foreground='red',
                              padding=10, width=8,
                              activebackground='yellow')
+        self.themes = root.get_themes()
+        self.themes.sort()
+        self.style.theme_use(self.themes[0])
+        self.create_widgets()
 
     def create_widgets(self):
 
@@ -73,16 +76,7 @@ class Application(Frame):
         '''
         OPTIONLIST
         '''
-        # 'alt', 'scidsand', 'classic', 'scidblue',
-        # 'scidmint', 'scidgreen', 'default', 'scidpink',
-        # 'arc', 'scidgrey', 'scidpurple', 'clam', 'smog'
-        # 'kroc', 'black', 'clearlooks', 'yaru', 'xpnative'
-        # 'winnative', 'vista', 'radiance', 'blue'
-        optionlist = ('black', 'black', 'radiance', 'clearlooks',
-                      'clam', 'alt', 'classic', 'arc',
-                      'scidblue', 'scidgrey', 'scidmint', 'scidsand',
-                      'default', 'smog', 'kroc', 'blue', 'yaru',
-                      'winnative', 'xpnative', 'vista')
+        optionlist = self.themes
         self.v = StringVar()
         self.v.set(optionlist[1])
         optlst = OptionMenu(self, self.v, *optionlist)
@@ -370,16 +364,10 @@ See: ttkthemes.readthedocs.io
         pass
 
 
-# root = Tk()
-# Requires ttkthemes module
-# 'alt', 'scidsand', 'classic', 'scidblue',
-# 'scidmint', 'scidgreen', 'default', 'scidpink',
-# 'arc', 'scidgrey', 'scidpurple', 'clam', 'smog'
-# 'kroc', 'black', 'clearlooks', 'yaru', 'xpnative'
-# 'winnative', 'vista', 'radiance', 'blue'
+#root = Tk()
 root = ThemedTk(theme=themename)
-# root.geometry("600x400") # WxH+left+top
 root.title("tkinter Demo with ttkthemes")
+# root.geometry("600x400") # WxH+left+top
 # root.overrideredirect(True) # removed window decorations
 # root.resizable(0,0) # no resize & removes maximize button
 root.iconphoto(False, PhotoImage(file='icon.png'))
