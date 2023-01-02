@@ -12,7 +12,7 @@ Here I have prepared a python3 program with a handful of typical widgets.
 The same program is used to showcase the straight tkinter GUI style, and
 four other GUI packages written for python/tkinter.
 
-The best GUI libraries for Python tkinter would be GTK3 and QT. Both of those
+The premier GUI libraries for Python tkinter would be GTK3 and QT. Both of those
 are difficult to learn, and GTK does not work well outside of Linux.
 
 In my opinion _tkinter_ is for the programmer who needs to write a solid
