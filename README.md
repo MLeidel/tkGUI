@@ -24,12 +24,12 @@ including macOS, as well as on Windows systems. Python/tkinter programs work
 almost flawlessly (without alteration) across different OS.
 
 ttkbootstrap has more modern-familiar features than the other modules here.
-I find the ttkbootstrap works best on Linux/macOS system. The ttkthemes
-module is older, and has _some_ very attractive themes. For instance, the
-"vista" ttktheme is extremely close to the default Windows 10/11 light theme.
+The ttkthemes module is older, and has _some_ very attractive themes. 
+Although not particularly attractive, the "vista" ttktheme is extremely 
+similar to the Windows 10/11 light theme.
 
-Clone this repository and take a look at these demos. Maybe you'll decide
-to use one or more. Perhaps you'll decide to try GTK or QT instead.
+To try these demos you'll need to have tkinter installed with Python3.x.
+The 'requirements.txt' file has the other libraries you'll need.
 
 Note: my demo program is only for displaying widgets, and switching
 between themes.
