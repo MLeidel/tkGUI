@@ -148,17 +148,17 @@ class Application(Frame):
         '''
         FILE DIALOGS
         '''
-        openfiles = Button(self, text = "OpenFiles",
-           command = self.openfile)
-        openfiles.grid(column = 3, row = 2)
-        openfiles2 = Button(self, text = "OpenFiles2",
-            command = self.openfile2)
-        openfiles2.grid(column = 3, row = 3)
-        openfiles3 = Button(self, text = "Ask Directory",
-            command = self.openfile3)
-        openfiles3.grid(column = 3, row = 4)
-        savefile = Button(self, text = "Save File", command = self.savefiledlg)
-        savefile.grid(column = 3, row = 5)
+        openfiles = Button(self, text="OpenFiles",
+           command=self.openfile)
+        openfiles.grid(column=3, row=2)
+        openfiles2 = Button(self, text="OpenFiles2",
+            command=self.openfile2)
+        openfiles2.grid(column=3, row=3)
+        openfiles3 = Button(self, text="Ask Directory",
+            command=self.openfile3)
+        openfiles3.grid(column=3, row=4)
+        savefile = Button(self, text="Save File", command=self.savefiledlg)
+        savefile.grid(column=3, row=5)
 
         '''
         STATUSBAR (ttk Separator)
@@ -250,21 +250,6 @@ class Application(Frame):
         fp = self.listbox.get(list_item[0])
         print(str(fp) + " --> " + str(list_item[0]) +
             " of " + str(self.listbox.size()))
-    #
-    # FUNCS TO EDIT LISTBOX CONTENTS
-    #
-    # def delete_item(self):
-    #     if self.listbox.curselection() == ():
-    #         return # nothing selected
-    #     print("Deleting: " + str(self.listbox.curselection()))
-    #     self.listbox.delete(self.listbox.curselection())
-
-    # def insert_item(self):
-    #     if self.listbox.curselection() == ():
-    #         return # nothing selected
-    #     list_item = self.listbox.curselection()
-    #     self.listbox.insert(list_item[0], self.txtfld.get())
-    #     print("inserted at " + str(list_item[0]))
 
 
     def onComboSelect(self, e):
@@ -280,7 +265,7 @@ class Application(Frame):
         print(self.tex.get(1.0, END))  # text value
         print(self.c1.get())  # checkbutton 1
         print(self.c2.get())  # checkbutton 2
-        exit()
+        root.destroy()
 
 
     '''
@@ -328,7 +313,7 @@ class Application(Frame):
     def nm_file_saveas(self):
         pass
     def nm_file_exit(self):
-        quit()
+        self.done()
     def mn_edit_undo(self):
         pass
     def mn_edit_selall(self):
@@ -347,9 +332,8 @@ class Application(Frame):
         pass
 
 root = Tk()
-# root = ThemedTk(theme="yaru")
 # root.geometry("600x400") # WxH+left+top
-root.title("Demo")
+root.title("tkinter demo with awdark")
 # root.overrideredirect(True) # removed window decorations
 # root.resizable(0,0) # no resize & removes maximize button
 root.iconphoto(False, PhotoImage(file='icon.png'))

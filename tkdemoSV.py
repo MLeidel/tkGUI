@@ -1,7 +1,7 @@
 # tkdemoSV.py
 # tkinter GUI with Sun Valley ttk theme by rdbende
 #   There may be some color rendering problems depending
-#   on your system theme (filedialog in "dark" mode)
+#   on your system theme (filedialog has white on white for me)
 # https://github.com/rdbende/Sun-Valley-ttk-theme
 
 from tkinter import *
@@ -352,7 +352,7 @@ class Application(Frame):
 
 #
 root = Tk()
-root.geometry("565x395") # WxH+left+top
+root.geometry("575x395") # WxH+left+top
 root.title("Tkinter Demo sv_ttk")
 # root.overrideredirect(True) # removed window decorations
 root.resizable(0,0) # no resize & removes maximize button
