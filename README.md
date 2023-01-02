@@ -12,10 +12,10 @@ Here I have prepared a python3 program with a handful of typical widgets.
 The same program is used to showcase the straight tkinter GUI style, and
 four other GUI packages written for python/tkinter.
 
-The premier GUI libraries for Python tkinter would be GTK3 and QT. Both of those
+The premier GUI libraries for Python would be GTK3 and QT. Both of those
 are difficult to learn, and GTK does not work well outside of Linux.
 
-In my opinion _tkinter_ is for the programmer who needs to write a solid
+In my opinion _tkinter_ works for the programmer who needs to write a solid
 GUI application, but not necessarily an enterprise level application.
 
 The tkinter package (“Tk interface”) is the standard Python interface to the 
@@ -31,8 +31,8 @@ module is older, and has _some_ very attractive themes. For instance, the
 Clone this repository and take a look at these demos. Maybe you'll decide
 to use one or more. Perhaps you'll decide to try GTK or QT instead.
 
-Note: my demo program is only for displaying widgets; not for anything
-else.
+Note: my demo program is only for displaying widgets, and switching
+between themes.
 
 ---
 ## Learn more ...
