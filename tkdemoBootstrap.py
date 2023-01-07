@@ -1,9 +1,13 @@
 # tkdemoBootS.py
 # tkinter GUI with ttkbootstrap module
-
-from tkinter import *
-import ttkbootstrap as bs
+# ttkbootstrap has new widgets that could
+# replace older ones like messagebox, Listbox, ...
+# but documentation is thin and examples lacking.
+# Fortunately the themes do crossover to most of the
+# older tkinter widgets
+from ttkbootstrap import *
 from ttkbootstrap.constants import *
+from tkinter import Listbox
 from tkinter import messagebox
 from tkinter.messagebox import showerror
 from tkinter import filedialog
@@ -11,7 +15,7 @@ from tkinter.font import Font
 import os
 
 
-class Application(bs.Frame):
+class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.pack()
@@ -23,39 +27,38 @@ class Application(bs.Frame):
         '''
         BUTTONS
         '''
-        # relief styles: SUNKEN, RAISED (Default), and FLAT
-        btn1 = bs.Button(self, text="Close", command=self.done)
+        btn1 = Button(self, text="Close", command=self.done)
         btn1.grid(row=0,column=0, padx=4)
 
-        btn2 = bs.Button(self, text="About Window",
+        btn2 = Button(self, text="About Window",
                          command=self.create_window, bootstyle="info")
         btn2.grid(row=0,column=1, padx=4)
 
-        btn3 = bs.Button(self, text="See Messagebox", command=self.msgbox)
+        btn3 = Button(self, text="See Messagebox", command=self.msgbox)
         btn3.grid(row=0,column=3, padx=4)
 
         self.rowconfigure(0, pad=5)
 
 
         '''
-        LABELFRAME and COMBOBOX (ttk) in PANEDWINDOW
+        LABELFRAME and COMBOBOX in PANEDWINDOW
         '''
-        pwin = bs.PanedWindow(self, orient=HORIZONTAL)
+        pwin = PanedWindow(self, orient=HORIZONTAL)
         pwin.grid(row=1, column=0)
         pwin.grid(columnspan=2)
 
-        leftFrame = bs.LabelFrame(pwin, text="Left pane",
+        leftFrame = LabelFrame(pwin, text="Left pane",
             width=150, height=200)
         pwin.add(leftFrame)
-        lbl = bs.Label(leftFrame, text="Panedwindow\nwith\nCombobox")
+        lbl = Label(leftFrame, text="Panedwindow\nwith\nCombobox")
 
         lbl.grid(row=0, column=0, sticky=W)
 
-        self.cvar = bs.StringVar()
+        self.cvar = StringVar()
 
-        rightFrame = bs.LabelFrame(pwin, text="Right pane", width=150)
+        rightFrame = LabelFrame(pwin, text="Right pane", width=150)
         pwin.add(rightFrame)
-        self.combo = bs.Combobox(rightFrame, textvariable=self.cvar)
+        self.combo = Combobox(rightFrame, textvariable=self.cvar)
         self.combo['values'] = ('default', 'primary', 'secondary', 'success',
                            'info', 'warning', 'danger', 'light', 'dark',
                            'disabled', 'readonly')
@@ -81,8 +84,8 @@ class Application(bs.Frame):
         '''
         ENTRY
         '''
-        self.x = bs.StringVar()
-        entry = Entry(self, textvariable=self.x, bg='lightyellow')
+        self.x = StringVar()
+        entry = Entry(self, textvariable=self.x)
         entry.grid(row=2, column=1)
         self.x.set("Entry widget")
         entry.select_range(0, END)
@@ -92,7 +95,7 @@ class Application(bs.Frame):
         '''
         RADIO
         '''
-        self.radval = bs.StringVar()
+        self.radval = StringVar()
         radio1 = Radiobutton(self, variable=self.radval, value='ON', text='On')
         radio2 = Radiobutton(self, variable=self.radval, value='OFF', text='Off')
         radio1.grid(row=3,column=0, sticky=S)  # sticky here keeps closer together
@@ -103,8 +106,8 @@ class Application(bs.Frame):
         '''
         SPINBOX
         '''
-        self.s = bs.StringVar()
-        spin = Spinbox(self, from_=1, to=9, relief=SUNKEN, width=6, textvariable=self.s)
+        self.s = StringVar()
+        spin = Spinbox(self, from_=1, to=9, width=6, textvariable=self.s)
         spin.grid(row=5, column=0)
 
 
@@ -119,7 +122,7 @@ class Application(bs.Frame):
           undo=True,
           tabs=(efont.measure('  '),)
         )
-        self.scrollY = bs.Scrollbar(self, orient=VERTICAL, command=self.tex.yview)
+        self.scrollY = Scrollbar(self, orient=VERTICAL, command=self.tex.yview)
         self.scrollY.grid(row=3, column=2, rowspan=3, sticky=N+S+W)
         self.tex['yscrollcommand'] = self.scrollY.set
 
@@ -130,30 +133,30 @@ class Application(bs.Frame):
         '''
         CHECKBUTTONS
         '''
-        Fr = bs.Frame(self)  # Frame with two Checkbuttons
+        Fr = Frame(self)  # Frame with two Checkbuttons
         Fr.grid(row=6, column=0)
 
-        self.c1 = bs.IntVar()
-        chkb1 = bs.Checkbutton(Fr, variable=self.c1, text='Over 18', width=8)
+        self.c1 = IntVar()
+        chkb1 = Checkbutton(Fr, variable=self.c1, text='Over 18', width=8)
         chkb1.grid(row=0, column=0, pady=(8, 3))
         self.c2 = IntVar()
-        chkb2 = bs.Checkbutton(Fr, variable=self.c2, text='Veteran', width=8)
+        chkb2 = Checkbutton(Fr, variable=self.c2, text='Veteran', width=8)
         chkb2.grid(row=1, column=0, pady=(3, 8))
 
-        Fr2 = bs.Frame(self)  # another Frame with two Checkbuttons
+        Fr2 = Frame(self)  # another Frame with two Checkbuttons
         Fr2.grid(row=6, column=1)
 
-        self.c3 = bs.IntVar()
-        chkb3 = bs.Checkbutton(Fr2, variable=self.c3,
+        self.c3 = IntVar()
+        chkb3 = Checkbutton(Fr2, variable=self.c3,
                                text='Male', width=8, bootstyle="round-toggle")
         chkb3.grid(row=0, column=0, pady=(8, 3))
         self.c4 = IntVar()
-        chkb4 = bs.Checkbutton(Fr2, variable=self.c4,
+        chkb4 = Checkbutton(Fr2, variable=self.c4,
                                text='Female', width=8, bootstyle="square-toggle")
         chkb4.grid(row=1, column=0, pady=(3, 8))
 
         self.c5 = IntVar()
-        chkb5 = bs.Checkbutton(Fr2, variable=self.c5,
+        chkb5 = Checkbutton(Fr2, variable=self.c5,
                                text='maried', bootstyle="success-outline-toolbutton")
         chkb5.grid(row=0, column=1, pady=(3, 3))
 
@@ -163,7 +166,7 @@ class Application(bs.Frame):
         self.listbox = Listbox(self, height=7)
         self.listbox.grid(row=1, column=3, pady=4)
 
-        self.scrollbar = bs.Scrollbar(self,orient=VERTICAL, command=self.listbox.yview)
+        self.scrollbar = Scrollbar(self,orient=VERTICAL, command=self.listbox.yview)
         self.scrollbar.grid(row=1, column=4, sticky=W+N+S, pady=4)
         self.listbox['yscrollcommand'] = self.scrollbar.set
         self.listbox.bind("<<ListboxSelect>>", self.list_clicked)
@@ -174,25 +177,25 @@ class Application(bs.Frame):
         '''
         FILE DIALOGS
         '''
-        openfiles = bs.Button(self, text = "OpenFiles",
-                              command = self.openfile)
+        openfiles = Button(self, text = "OpenFiles",
+                              command = self.openfile, width=12)
         openfiles.grid(column = 3, row = 2)
-        openfiles2 = bs.Button(self, text = "OpenFiles2",
-                               command = self.openfile2)
+        openfiles2 = Button(self, text = "OpenFiles2",
+                               command = self.openfile2, width=12)
         openfiles2.grid(column = 3, row = 3)
-        openfiles3 = bs.Button(self, text = "Ask Directory",
-                               command = self.openfile3)
-        openfiles3.grid(column = 3, row = 4)
-        savefile = bs.Button(self, text = "Save File", command=self.savefiledlg)
-        savefile.grid(column = 3, row = 5)
-        btntheme = bs.Button(self, text="Theme",
+        openfiles3 = Button(self, text = "Ask Directory",
+                               command = self.openfile3, width=12)
+        openfiles3.grid(column = 3, row = 4, sticky="s")
+        savefile = Button(self, text = "Save File", command=self.savefiledlg, width=12)
+        savefile.grid(column = 3, row = 5, sticky="n")
+        btntheme = Button(self, text="Theme", width=12,
                           command=self.changetheme, bootstyle="danger-outline")
         btntheme.grid(column=3, row=6)
 
         '''
-        STATUSBAR (ttk Separator)
+        STATUSBAR (can use Separator)
         '''
-        sep = bs.Separator(self, orient=HORIZONTAL)
+        sep = Separator(self, orient=HORIZONTAL)
         sep.grid(row=7, column=0, columnspan=6, sticky='WE')
         statusbar = Label(self, text=" Separator ...", anchor=W)
         statusbar.grid(row=8, column=0, columnspan=6, sticky='WE')
@@ -264,7 +267,7 @@ class Application(bs.Frame):
 
     def create_window(self):
         self.counter += 1
-        t = bs.Toplevel(self)
+        t = Toplevel(self)
         t.wm_title("About window #%s" % self.counter)
         #t.geometry("300x300") # WxH+left+top
         msg = '''
@@ -293,7 +296,7 @@ See: ttkbootstrap.readthedocs.io
         ''' change the ttkbootstrap GUI theme '''
         thame = self.v.get()
         print(thame)
-        bs.Style(theme=thame)
+        Style(theme=thame)
         # toggle menu ?
         if self.radval.get() == "OFF":
             app.config(menu="")
@@ -385,12 +388,12 @@ See: ttkbootstrap.readthedocs.io
         pass
 
 #
-app = bs.Window("tkinter Demo with ttkbootstrap module", "cosmo")
+app = Window("tkinter Demo with ttkbootstrap module", "cosmo")
 app.geometry("550x410") # WxH+left+top
 
 # root.overrideredirect(True) # removed window decorations
 # root.attributes("-topmost", True)  # Keep on top of other windows
-bs.Sizegrip(app).place(rely=1.0, relx=1.0, x=0, y=0, anchor='se')
+Sizegrip(app).place(rely=1.0, relx=1.0, x=0, y=0, anchor='se')
 
 app.iconphoto(False, PhotoImage(file='icon.png'))
 

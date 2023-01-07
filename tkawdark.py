@@ -258,7 +258,6 @@ class Application(Frame):
 
 
     def done(self):
-        print(self.v.get())  # optionlist
         print(self.x.get())  # entry field
         print(self.radval.get())  # radio button
         print(self.s.get())  # spinbox value
