@@ -389,7 +389,7 @@ See: ttkbootstrap.readthedocs.io
 
 #
 app = Window("tkinter Demo with ttkbootstrap module", "cosmo")
-app.geometry("550x410") # WxH+left+top
+app.geometry("565x410") # WxH+left+top
 
 # root.overrideredirect(True) # removed window decorations
 # root.attributes("-topmost", True)  # Keep on top of other windows
