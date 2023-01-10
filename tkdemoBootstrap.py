@@ -59,9 +59,8 @@ class Application(Frame):
         rightFrame = LabelFrame(pwin, text="Right pane", width=150)
         pwin.add(rightFrame)
         self.combo = Combobox(rightFrame, textvariable=self.cvar)
-        self.combo['values'] = ('default', 'primary', 'secondary', 'success',
-                           'info', 'warning', 'danger', 'light', 'dark',
-                           'disabled', 'readonly')
+        self.combo['values'] = ("primary", "secondary", "success", "info", "warning",
+                                "danger", "light", "dark")
         self.combo.bind("<<ComboboxSelected>>", self.onComboSelect)
         self.combo.current(0)
         self.combo.grid(row=0, column=0, sticky='NSEW')
@@ -70,13 +69,9 @@ class Application(Frame):
         '''
         OPTIONLIST
         '''
-        optionlist = ('cosmo', 'flatly', 'litera', 'minty',
-                      'lumen', 'sandstone', 'yeti', 'pulse',
-                      'united', 'morph', 'journal', 'darkly',
-                      'superhero', 'solar', 'cyborg', 'vapor',
-                      'simplex', 'cerculean')
+        optionlist = app.style.theme_names()
         self.v = StringVar()
-        self.v.set(optionlist[0])
+        #self.v.set(optionlist[0])
         optlst = OptionMenu(self, self.v, *optionlist)
         optlst.grid(row=2,column=0)
 
