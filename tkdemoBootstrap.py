@@ -158,7 +158,7 @@ class Application(Frame):
         '''
         Scrolling Listbox
         '''
-        self.listbox = Listbox(self, height=7)
+        self.listbox = Listbox(self, height=7, exportselection=False)
         self.listbox.grid(row=1, column=3, pady=4)
 
         self.scrollbar = Scrollbar(self,orient=VERTICAL, command=self.listbox.yview)
@@ -282,9 +282,10 @@ See: ttkbootstrap.readthedocs.io
 
 
     def list_clicked(self, event):
-        list_item = self.listbox.curselection()
-        fp = self.listbox.get(list_item[0])
-        print(fp)
+        list_item = self.listbox.get(ANCHOR)
+        list_inx = self.listbox.index(ANCHOR)
+        print(list_item, str(list_inx) +
+              " of " + str(self.listbox.size()))
 
 
     def changetheme(self):

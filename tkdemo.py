@@ -29,8 +29,8 @@ class Application(Frame):
         btn2 = Button(self, text="Child Window", command=self.create_window, relief=SUNKEN)
         btn2.grid(row=0,column=1, padx=4)
 
-        btn3 = Button(self, text="See Messagebox", command=self.msgbox, relief=FLAT)
-        btn3.grid(row=0,column=3, padx=4)
+        self.btn3 = Button(self, text="See Messagebox", command=self.msgbox, relief=FLAT)
+        self.btn3.grid(row=0,column=3, padx=4)
 
         self.rowconfigure(0, pad=5)
 
@@ -137,7 +137,7 @@ class Application(Frame):
         '''
         Scrolling Listbox
         '''
-        self.listbox = Listbox(self, height=7)
+        self.listbox = Listbox(self, height=7, exportselection=False)
         self.listbox.grid(row=1, column=3, pady=4)
 
         self.scrollbar = Scrollbar(self,orient=VERTICAL, command=self.listbox.yview)
@@ -231,6 +231,7 @@ class Application(Frame):
             ok, yes, retry returns TRUE
             no, cancel returns FALSE
         '''
+        self.btn3.flash()
         messagebox.askyesno('Message title', 'askyesno example')
 
 
@@ -248,10 +249,10 @@ class Application(Frame):
 
 
     def list_clicked(self, event):
-        list_item = self.listbox.curselection()
-        fp = self.listbox.get(list_item[0])
-        print(str(fp) + " --> " + str(list_item[0]) +
-            " of " + str(self.listbox.size()))
+        list_item = self.listbox.get(ANCHOR)
+        list_inx = self.listbox.index(ANCHOR)
+        print(list_item, str(list_inx) +
+              " of " + str(self.listbox.size()))
 
 
     def onComboSelect(self, e):
