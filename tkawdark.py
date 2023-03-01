@@ -116,6 +116,16 @@ class Application(Frame):
         self.tex.insert(END, "hello")
         #  content = self.tex.get("1.0", END)  # to get all Text contents
 
+        '''
+        SCALE
+        '''
+        self.scale = Scale(self, from_=0, to=50,
+                           value=25,
+                           orient=HORIZONTAL,
+                           length=200,
+                           command=self.scale_action)
+        self.scale.grid(row=6, column=1, padx=5, pady=5)
+
 
         '''
         CHECKBUTTONS
@@ -212,6 +222,14 @@ class Application(Frame):
             except:
                 showerror("Save File", "Failed to save file\n'%s'" % fname)
             return
+
+    def scale_action(self, value):
+        ''' output value of Scale widget
+                    or
+            x = self.scale.get()
+            print(int(float(x)))
+        '''
+        print(int(float(value)))
 
 
     '''

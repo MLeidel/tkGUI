@@ -131,6 +131,16 @@ class Application(Frame):
         self.tex.insert(END, themename)
         #  content = self.tex.get("1.0", END)  # to get all Text contents
 
+        '''
+        SCALE
+        '''
+        self.scale = Scale(self, from_=0, to=50,
+                           value=25,
+                           orient=HORIZONTAL,
+                           length=200,
+                           command=self.scale_action)
+        self.scale.grid(row=6, column=1, padx=5, pady=5)
+
 
         '''
         CHECKBUTTONS
@@ -177,6 +187,7 @@ class Application(Frame):
         savefile = Button(self, text="Theme",
                           command=self.changetheme, style="My.TButton")
         savefile.grid(column=3, row=6)
+
 
         '''
         STATUSBAR (ttk Separator)
@@ -301,6 +312,16 @@ See: ttkthemes.readthedocs.io
         else:
             self.create_menu()
 
+
+    def scale_action(self, value):
+        ''' output value of Scale widget
+                    or
+            x = self.scale.get()
+            print(int(float(x)))
+        '''
+        print(int(float(value)))
+
+
     '''
     MENUS
     '''
@@ -337,7 +358,6 @@ See: ttkthemes.readthedocs.io
         root.config(menu=menubar) # display the menu
 
     def mn_file_new(self):
-        # self.style.theme_use("black")
         pass
     def nm_file_open(self):
         pass
