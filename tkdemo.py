@@ -363,5 +363,5 @@ root.title("Tkinter Demo No GUI modules")
 root.resizable(0,0) # no resize & removes maximize button
 root.iconphoto(False, PhotoImage(file='icon.png'))
 # root.attributes("-topmost", True)  # Keep on top of other windows
-app = Application(master=root)
-app.mainloop()
+Application(root)
+root.mainloop()

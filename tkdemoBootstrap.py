@@ -154,16 +154,20 @@ class Application(Frame):
 
         self.c3 = IntVar()
         chkb3 = Checkbutton(Fr2, variable=self.c3,
-                               text='Male', width=8, bootstyle="round-toggle")
+                            text='Male', width=8,
+                            bootstyle="round-toggle")
         chkb3.grid(row=0, column=0, pady=(8, 3))
+
         self.c4 = IntVar()
         chkb4 = Checkbutton(Fr2, variable=self.c4,
-                               text='Female', width=8, bootstyle="square-toggle")
+                            text='Female', width=8,
+                            bootstyle="square-toggle")
         chkb4.grid(row=1, column=0, pady=(3, 8))
 
         self.c5 = IntVar()
         chkb5 = Checkbutton(Fr2, variable=self.c5,
-                               text='maried', bootstyle="success-outline-toolbutton")
+                            text='maried',
+                            bootstyle="success-outline-toolbutton")
         chkb5.grid(row=0, column=1, pady=(3, 3))
 
         '''
@@ -404,7 +408,7 @@ See: ttkbootstrap.readthedocs.io
 
 #
 app = Window("tkinter Demo with ttkbootstrap module", "cosmo")
-app.geometry("565x410") # WxH+left+top
+app.geometry("565x445") # WxH+left+top
 
 # root.overrideredirect(True) # removed window decorations
 # root.attributes("-topmost", True)  # Keep on top of other windows

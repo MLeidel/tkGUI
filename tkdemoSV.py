@@ -371,7 +371,7 @@ class Application(Frame):
 
 #
 root = Tk()
-root.geometry("575x395") # WxH+left+top
+root.geometry("575x410") # WxH+left+top
 root.title("Tkinter Demo sv_ttk")
 # root.overrideredirect(True) # removed window decorations
 root.resizable(0,0) # no resize & removes maximize button
